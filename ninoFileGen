@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+
+import sys
+import os
+
+class NinoImageGenerator:
+    
+    def build_image(self, size: int, path: str):
+        size_in_mb = size*1000000
+        with open(path, 'wb') as file_test:
+            file_test.write(os.urandom(size))
+        print('file generated in '+path+' with size of '+str(size))
+
+if __name__ =='__main__':
+    ninoGen = NinoImageGenerator()
+    file_path = str(sys.argv[1])
+    file_size = int(sys.argv[2])
+    ninoGen.build_image(file_size, file_path)
